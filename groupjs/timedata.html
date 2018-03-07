@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="UTF-8">
+<title></title> 
+<link rel="stylesheet" rev="stylesheet" href="layui/css/layui.css"/>
+</head>
+
+<body>
+<div class="info"></div>
+<input type="text" id="test1" name="n1">
+<input type="text" id="test2">
+<button>提交</button>
+
+
+<script type="text/javascript" src="gjs/common/jquery.min.js"></script> 
+<script src="layui/layui.all.js"></script>
+<script type="text/javascript" src="gjs/modules/timedata.js"></script> 
+<script> 
+var data=new timedata();
+data.timedata({
+	elem:"#test1",
+	type:"date",  //可选项--year(年)，month(月)，date(年月日)，time(时分钞)，datetime(年月日时分钞)
+	value: '2018-02-10' //必须遵循format参数设定的格式  
+});
+data.timedata({
+	elem:"#test2",
+	type:"date",  //可选项--year(年)，month(月)，date(年月日)，time(时分钞)，datetime(年月日时分钞) 
+	min: '2018-2-12'
+	,max: '2018-6-10'
+});
+	
+	
+$("button").click(function(){
+	var time01=$("#test1").val();
+	var time02=$("#test2").val();
+	$(".info").html("开始时间："+time01+"<br>结束时间："+time02);
+})
+</script>
+</body> 
+</html>

@@ -1,0 +1,12 @@
+@charset "utf-8";
+.box{width:800px;margin:40px auto;} 
+.alertBox{height: 80px;}
+.alertBox li{float: left;width:100px;height: 40px;line-height: 40px;font-size:16px;font-weight:700;padding: 20px;}
+.alertBox li a{display: block;color: #fff;border-radius: 4px;background: #0080ff;text-align: center;}
+ 
+.alertInfo{margin-bottom: 20px;}
+.info p{padding: 0 20px; font-size: 18px;font-weight: 700;}
+.info img{padding: 20px;width:520px;}
+
+.barbtn{width:30px;height:30px;display:inline-block;padding:0 5px;}
+.barbtn img{width:100%;max-width: 100%;}

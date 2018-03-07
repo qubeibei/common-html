@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title> 
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-table.csss" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<table id='table'>
+					<div class="col-md-12">
+						<div id="toolbar" class="btn-group">
+							 
+						</div>
+						</div>
+				</table>
+				
+			</div>
+		</div>
+
+		<script type="text/javascript" src="gjs/common/jquery.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script>
+			$(function(){  
+			    $('#table').bootstrapTable({  
+			    ajax : function (request) {  
+			        $.ajax({ 
+			            type : "GET",  
+			            url : "data/data.json",  
+			            contentType: "application/json;charset=utf-8",  
+			            dataType:"json",  
+			            data:'',  
+			          /*  jsonp:'callback',  */
+			            success : function (msg) { 
+			            	console.log(msg.rows)
+			                request.success({  
+			                    row : msg.rows
+			                });  
+			                $('#table').bootstrapTable('load', msg.rows);  
+			            },  
+			            error:function(){  
+			                alert("错误");  
+			            }  
+			        });  
+			    },  
+			          
+			        toolbar:'#toolbar',  //工具按钮用哪个容器  
+			        striped: true,      //是否显示行间隔色  
+			        singleSelect:true,  
+			        clickToSelect:true,   
+			        sortName: "create_time",  
+			        sortOrder: "desc",  
+			        pageSize: 10,  
+			        pageNumber: 1,  
+			        pageList: "[5, 10, 15, 20, All]",  
+			        showToggle: true,  
+			        showRefresh: true,  
+			        showColumns: true,  
+			        search: true,  
+			        pagination: true,  
+			        columns: [{  
+			            field: 'id',  
+			            title: '推荐位名称',  
+			            switchable: true  
+			        }, {  
+			            field: 'name',  
+			            title: '场景',  
+			            switchable: true   
+			        },{  
+			            field: 'price',  
+			            title: '推荐人',  
+			            switchable: true  
+			        }],  
+			  
+			    });  
+			})  
+		</script>
+	</body>
+
+</html>

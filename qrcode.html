@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head>	<meta charset="utf-8">	<title>生成二维码</title>	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">	<style>		div{padding: 20px;}		.code{border: 1px solid #ddd;}		#code{width:120px;height: 40px;line-height: 40px;text-align: center;background: #eee;}	</style></head><body> 
+<div class="code">	<input type="text" class="info" value="请输入内容"/>	<p id="code">点击生成二维码</p>	<div id="mycode"></div></div><p>根据网址生成二维码</p>
+<div id="output"></div><p>根据网址生成table格式的二维码</p><div id="tableCode"></div><p>根据字符生成二维码</p><div id="numCode"></div> 
+<script src="js/common/jquery.min.js"></script><script src="js/common/jquery.qrcode.min.js"></script><script src="js/modules/common.js"></script><script>	$(function(){ 				$("#code").click(function(){			$("#mycode").html("");			$("#mycode").qrcode(toUtf8($(".info").val()));//如果内容中有中文，在生成二维码就要把字符串转换成utf-8  		})				
+		$('#output').qrcode("http://www.jq22.com");
+		$('#tableCode').qrcode({
+			render:"table",
+			text:"http://www.baidu.com"
+		});		$('#numCode').qrcode({			render:"canvas",			width:200,			height:200,			text:"123456safdg"  			//微博扫一扫：大约200 字以内，微信扫一扫：大约 160字以内，支付宝扫一扫：大约130字符以内  			//text 字符串太长 微信/支付宝等扫一扫无法识别，微博识别内容更多			//text 属性的值长度不能太长，最大字节数 10208		});		 
+	});</script>
+</body></html>
